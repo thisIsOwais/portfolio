@@ -73,7 +73,7 @@ function Header() {
           )}
           {viewResume && (
             <li>
-              <a href="https://drive.google.com/file/d/1extN3Bu6-ANv98VLTHNBQFqk3NDGFGwm/view?usp=sharing">Resume</a>
+              <a href="https://drive.google.com/file/d/1q0zQHBEMs4qu2w7PLJVmljGHiSwmqBm1/view?usp=sharing">Resume</a>
             </li>
           )}
           <li>
