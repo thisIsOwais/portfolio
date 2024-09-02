@@ -2,6 +2,10 @@
 
 .social-media-div {
   font-size: 2em;
+  display: flex; /* Align items in a row */
+  gap: 10px; /* Add spacing between icons */
+  justify-content: flex-start; /* Center align items */
+  align-items: center; /* Vertically center items */
 }
 
 .icon-button {
@@ -108,5 +112,16 @@
 @media (max-width: 768px) {
   .social-media-div {
     text-align: center;
+  }
+}
+
+@media (max-width: 430px) {
+  .social-media-div {
+    text-align: center;
+    font-size: 2em;
+    display: flex; /* Align items in a row */
+    gap: 10px; /* Add spacing between icons */
+    justify-content: center; /* Center align items */
+    align-items: center; /* Vertically center items */
   }
 }

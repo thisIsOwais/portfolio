@@ -42,6 +42,7 @@ const socialMediaLinks = {
   codingninjas:"https://www.codingninjas.com/studio/profile/59a69a25-19d9-47a9-bc5d-790b80f08441",
   leetcode:"https://leetcode.com/u/Mohd_Owais__ansari/",
   hackerrank:"https://www.hackerrank.com/profile/MsAnsari",
+  linkTree:"https://linktr.ee/MOHD_OWAIS_ANSARI",
   // Instagram, Twitter and Kaggle are also supported in the links!
   // To customize icons and social links, tweak src/components/SocialMedia
   display: true // Set true to display this section, defaults to false
