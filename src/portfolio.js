@@ -250,7 +250,7 @@ const bigProjects = {
     },
     {
       image: require("./assets/images/genius.jpg"),
-      projectName: "Nextu",
+      projectName: "GENIUS AI-SaaS",
       projectDesc: "Genius AI-SaaS project, I developed an innovative platform that integrates OpenAI and Replicate AI to address coding queries and multimedia creation. The application features a user-friendly interface with modern UI elements, secure authentication using Clerk and Stripe, and real-time streaming of API responses. My work enhanced transaction security for over 1,500 users and reduced unauthorized access incidents by 40%. This project highlights my ability to create advanced AI-driven solutions with a strong focus on user experience and security.",
       footerLink: [
         {
