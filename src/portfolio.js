@@ -295,6 +295,10 @@ const achievementSection = {
         {
           name: "Source Code",
           url: "https://github.com/thisIsOwais/Web-Exploration-Recorder-Extension"
+        },
+        {
+          name: "Certification",
+          url: "https://drive.google.com/file/d/1oVTYgABJxEnhWcv5N0auKXRM0MsYjnf7/view?usp=sharing"
         }
       ]
     },
