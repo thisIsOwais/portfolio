@@ -146,11 +146,11 @@ const educationInfo = {
     {
       schoolName: "NATIONAL INSTITUTE OF TECHNOLOGY, WARANGAL",
       logo: require("./assets/images/NITWLOGO.png"),
-      subHeader: "B.Tech in Metallurgical and Material Science",
+      subHeader: "B.Tech in Computer Science and Engineering",
       duration: "DECEMBER 2021 - JUNE 2025",
       desc: "Participated in the hackathon like trinit-hackathon and others college tech projects.",
       descBullets: [
-        "I am currently pursuing a Bachelor of Technology (B.Tech) in Material Science and Metallurgical Engineering at the National Institute of Technology, Warangal (NITW), one of India's premier engineering institutions. Alongside my core studies, I have actively developed my skills in software development, particularly in full stack engineering, microservices, and serverless architectures. My education has provided a strong foundation in both engineering principles and advanced technology, enabling me to integrate technical expertise with problem-solving and analytical skills through hands-on projects and coursework."
+        "I am currently pursuing a Bachelor of Technology (B.Tech) in Computer Science and Engineering at the National Institute of Technology, Warangal (NITW), one of India's premier engineering institutions. Alongside my core studies, I have actively developed my skills in software development, particularly in full stack engineering, microservices, and serverless architectures. My education has provided a strong foundation in both engineering principles and advanced technology, enabling me to integrate technical expertise with problem-solving and analytical skills through hands-on projects and coursework."
       ]
     },
     {
