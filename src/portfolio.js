@@ -146,7 +146,7 @@ const educationInfo = {
     {
       schoolName: "NATIONAL INSTITUTE OF TECHNOLOGY, WARANGAL",
       logo: require("./assets/images/NITWLOGO.png"),
-      subHeader: "B.Tech in Metallurgical and Material Science",
+      subHeader: "B.Tech in Metallurgical and Materials Science",
       duration: "DECEMBER 2021 - JUNE 2025",
       desc: "Participated in the hackathon like trinit-hackathon and others college tech projects.",
       descBullets: [
