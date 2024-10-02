@@ -157,7 +157,7 @@ const educationInfo = {
       schoolName: "SHRI GURU RAM RAI EDUCATION MISSION",
       logo: require("./assets/images/school.jpeg"),
       subHeader: "Intermediate",
-      duration: "April 2019 - June 2020",
+      duration: "April 2020 - June 2021",
       desc: "I have attended Shri Guru Ram Rai Public School, where you excelled academically, achieving an outstanding 97% in your CBSE exams in 2020. This remarkable performance earned you the distinction of being the district topper, highlighting your dedication and commitment to your studies during your school years."
     }
   ]
