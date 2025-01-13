@@ -158,7 +158,7 @@ const educationInfo = {
       logo: require("./assets/images/school.jpeg"),
       subHeader: "Intermediate",
       duration: "April 2020 - June 2021",
-      descBullets:["I have attended Shri Guru Ram Rai Public School, where you excelled academically, achieving an outstanding 97% in your CBSE exams in 2020. This remarkable performance earned you the distinction of being the district topper, highlighting your dedication and commitment to your studies during your school years."]
+      descBullets:["I have attended Shri Guru Ram Rai Public School, where I excelled with holistic devlopment, achieving an outstanding 97% in my CBSE exams in 2020 and served as the Head Boy of the school. This remarkable performance earned me the distinction of being the district topper, highlighting my dedication and commitment to my studies and soft skills during my school years."]
     }
   ]
 };
