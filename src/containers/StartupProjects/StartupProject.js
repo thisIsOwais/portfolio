@@ -43,7 +43,8 @@ export default function StartupProject() {
                       : "project-card project-card-light"
                   }
                 >
-                  {project.image ? (
+                  {project.video?(<iframe src="https://drive.google.com/file/d/1svMlMLnAVk106Bwh5ChAPR8mV_jhb8rM/preview" width="250px" height="200px" allow="autoplay; fullscreen"
+                  allowfullscreen></iframe>):project.image ? (
                     <div className="project-image">
                       <img
                         src={project.image}

@@ -23,7 +23,7 @@ const greeting = {
   username: "Mohd Owais Ansari",
   title: "Hi all, I'm Owais",
   subTitle: emoji(
-    "A passionate Full Stack Software Developer 🚀 having an experience of building Web  applications with JavaScript / Reactjs / Nextjs /Nodejs /  and  AWS some other cool libraries and frameworks."
+    "A passionate Full Stack Software Developer 🚀 with expertise in building dynamic and scalable web applications. Beyond development, I have a strong foundation in Data Structures and Algorithms (DSA), enabling me to craft efficient and optimized solutions."
   ),
   resumeLink:
     "https://drive.google.com/file/d/1q0zQHBEMs4qu2w7PLJVmljGHiSwmqBm1/view?usp=sharing", // Set to empty to hide the button
@@ -52,17 +52,17 @@ const socialMediaLinks = {
 
 const skillsSection = {
   title: "What I do",
-  subTitle: "CRAZY FULL STACK DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK AND CONVERT IDEAS INTO REALITY",
+  subTitle: "CRAZY FULL STACK DEVELOPER WHO WANTS TO EXPLORE SOME TECHNOLOGIES AND CONVERT IDEAS INTO REALITY",
   skills: [
     emoji(
-      "⚡ Develop highly interactive Front end / User Interfaces for your web applications"
+      "⚡ Develop highly interactive Front end / User Interfaces for web applications"
     ),
     emoji("⚡ Progressive Web Applications ( PWA ) in NEXT.JS and MERN Stacks"),
     emoji(
       "⚡ Develop Chrome Extension for Web Exploration Recorder and some other cool stuff" 
     ),    
     emoji(
-      "⚡ Integration of third party services such as Firebase/ AWS / Digital Ocean"
+      "⚡ Integration of third party services such as Firebase/ AWS"
     )
   ],
 
@@ -158,7 +158,7 @@ const educationInfo = {
       logo: require("./assets/images/school.jpeg"),
       subHeader: "Intermediate",
       duration: "April 2020 - June 2021",
-      desc: "I have attended Shri Guru Ram Rai Public School, where you excelled academically, achieving an outstanding 97% in your CBSE exams in 2020. This remarkable performance earned you the distinction of being the district topper, highlighting your dedication and commitment to your studies during your school years."
+      descBullets:["I have attended Shri Guru Ram Rai Public School, where you excelled academically, achieving an outstanding 97% in your CBSE exams in 2020. This remarkable performance earned you the distinction of being the district topper, highlighting your dedication and commitment to your studies during your school years."]
     }
   ]
 };
@@ -170,7 +170,7 @@ const techStack = {
   experience: [
     {
       Stack: "Frontend/Design", //Insert stack or technology you have experience in
-      progressPercentage: "70%" //Insert relative proficiency in percentage
+      progressPercentage: "60%" //Insert relative proficiency in percentage
     },
     {
       Stack: "Backend",
@@ -178,7 +178,7 @@ const techStack = {
     },
     {
       Stack: "Programming",
-      progressPercentage: "80%"
+      progressPercentage: "90%"
     }
   ],
   displayCodersrank: false // Set true to display codersrank badges section need to changes your username in src/containers/skillProgress/skillProgress.js:17:62, defaults to false
@@ -194,14 +194,14 @@ const workExperiences = {
       company: "OSH",
       companylogo: require("./assets/images/osh.jpeg"),
       date: "March 2024 – May 2024",
-      desc:  "Engineered a backend system for an Aadhaar Enabled Payment System (AEPS) to facilitate merchant onboarding and financial transactions. Integrated Eko API for e-KYC biometric verification and implemented JWT encryption to secure data. Designed and developed RESTful APIs, ensuring seamless communication between clients and servers."
+      desc:  "Engineered a backend system for an Aadhaar Enabled Payment System (AEPS) to facilitate merchant onboarding and financial transactions. Integrated Eko API for e-KYC biometric verification and implemented JWT authentication to secure data. Designed and developed RESTful APIs, ensuring seamless communication between clients and servers."
     },
     {
       role: "Software Engineer Intern",
       company: "Tripolymath",
       companylogo: require("./assets/images/tripolymath.jpeg"),
       date: "May 2024 – August 2024",
-      desc: "Developed and optimized scalable serverless functions using Node.js, PostgreSQL, AWS Lambda, and API Gateway for an e-commerce platform. Key contributions include microservices for user authentication, product catalog, inventory management, and transaction processing. Utilized AWS CloudFormation and AWS CDK for infrastructure as code, ensuring efficient deployment and management of cloud resources."
+      desc: "Developed and optimized scalable serverless functions using Node.js, PostgreSQL, AWS Lambda, and API Gateway for an e-commerce platform. Key contributions include microservices for user authentication, product catalog, inventory management ensuring efficient deployment and management of cloud resources."
     }
   ]
 };
@@ -218,12 +218,12 @@ const openSource = {
 
 const bigProjects = {
   title: "Big Projects",
-  subtitle: "SOME STARTUPS AND COMPANIES THAT I HELPED TO CREATE THEIR TECH",
+  subtitle: "STARTUP THAT I HELPED TO CREATE THEIR TECH",
   projects: [
     {
       image: require("./assets/images/awslambda.png"),
       projectName: "AWS LAMBDA",
-      projectDesc: "Developed a scalable serverless architecture for an e-commerce platform using Node.js, PostgreSQL, AWS Lambda, and API Gateway. Designed and implemented key microservices for user authentication, product management, notifications, and transactions. Utilized AWS CloudFormation and AWS CDK to manage infrastructure as code, ensuring a robust and efficient deployment process.",
+      projectDesc: "Developed a scalable serverless architecture for an e-commerce platform using Node.js, PostgreSQL, AWS Lambda, and API Gateway. Designed and implemented key microservices for user authentication, product management and transactions, ensuring a robust and efficient deployment process.",
       footerLink: [
         {
           name: "Visit System Design",
@@ -239,7 +239,7 @@ const bigProjects = {
     {
       image: require("./assets/images/eshop.jpeg"),
       projectName: "Eshop",
-      projectDesc: "Node.js Microservices Architecture for Online Shop (E-Commerce)project, you transformed a monolithic application into a modular microservices architecture. The project involved using Node.js, MongoDB, and Nginx for efficient request redirection, alongside AMQPLIB for inter-service communication. This setup significantly improved the scalability and maintainability of the e-commerce platform.",
+      projectDesc: "Node.js Microservices Architecture for Online Shop (E-Commerce)project,I transformed a monolithic application into a modular microservices architecture. The project involved using Node.js, MongoDB, and Nginx for efficient request redirection, alongside AMQPLIB for inter-service communication. This setup significantly improved the scalability and maintainability of the e-commerce platform.",
       footerLink: [
         {
           name: "Visit Code",
@@ -251,17 +251,32 @@ const bigProjects = {
     {
       image: require("./assets/images/genius.jpg"),
       projectName: "GENIUS AI-SaaS",
-      projectDesc: "Genius AI-SaaS project, I developed an innovative platform that integrates OpenAI and Replicate AI to address coding queries and multimedia creation. The application features a user-friendly interface with modern UI elements, secure authentication using Clerk and Stripe, and real-time streaming of API responses. My work enhanced transaction security for over 1,500 users and reduced unauthorized access incidents by 40%. This project highlights my ability to create advanced AI-driven solutions with a strong focus on user experience and security.",
+      projectDesc: "Genius AI-SaaS project, I developed an innovative platform that integrates OpenAI and Replicate AI to address coding queries and multimedia creation. The application features a user-friendly interface, secure authentication using Clerk and Stripe, and real-time streaming of API responses. This project highlights my ability to create advanced AI-driven solutions with a strong focus on user experience and security.",
       footerLink: [
         {
           name: "Visit Website",
           url: "https://genius-roan-iota.vercel.app/"
         }
       ]
+    },
+    {
+      image: require("./assets/images/webExplore.png"),
+      video:true,
+      projectName: "Real-Time Web Activity Tracker(click on video to see demo)",
+      projectDesc: "Developed a Chrome Extension for web activity tracking using JavaScript, WebSocket, and Express.js. Implemented real-time session handling and rrweb data streaming with WebSocket communication. Built a robust backend API to manage and serve event data, utilizing Node.js backend for a scalable solution, optimizing data handling for seamless performance.",
+      footerLink: [
+        {
+          name: "Source Code",
+          url: "https://github.com/thisIsOwais/Web-Exploration-Recorder-Extension"
+        }
+      ]
     }
   ],
   display: true // Set false to hide this section, defaults to true
 };
+
+
+
 
 // Achievement Section
 // Include certificates, talks etc
@@ -288,7 +303,7 @@ const achievementSection = {
     {
       title: "TRINIT HACKATHON",
       subtitle:
-        "Developed a chrome extension that allows users to record their work during solving any bug in code and pushing on githubs . The extension features a user-friendly interface with drag-and-drop functionality, real-time updates, and secure authentication using Firebase. My work on this project earned me a top 3 rank in the hackathon, highlighting my ability to create innovative solutions with a strong focus on user experience and functionality.",
+        "Developed a web application with my team that allows users/students to upload topics they studied, automatically generating quizzes to help them assess their preparation level. The application features a user-friendly interface, real-time updates, and secure authentication using Firebase.. My team work on this project earned me a top 3 rank in the hackathon, highlighting my ability to create innovative solutions with a strong focus on user experience and functionality.",
       image: require("./assets/images/trinit.jpg"),
       imageAlt: "Google Assistant Action Logo",
       footerLink: [
@@ -300,7 +315,41 @@ const achievementSection = {
           name: "Certification",
           url: "https://drive.google.com/file/d/1oVTYgABJxEnhWcv5N0auKXRM0MsYjnf7/view?usp=sharing"
         }
-      ]
+        ]
+      },
+    {
+      title: "INTERNSHIP AT OSH",
+      subtitle:
+        "Developed a secure and reliable backend system for an Aadhaar-enabled payment platform, enabling merchant onboarding and achieving over 99.9% uptime. Implemented JWT encryption for enhanced data security and designed RESTful APIs for seamless client-server communication. Collaborated with the team to launch features that improved user satisfaction by 20%.",
+      image: require("./assets/images/backIntern.png"),
+      imageAlt: "Google Assistant Action Logo",
+      footerLink: [
+        // {
+        //   name: "Source Code",
+        //   url: "https://github.com/thisIsOwais/Web-Exploration-Recorder-Extension"
+        // },
+        {
+          name: "Certification",
+          url: "https://drive.google.com/file/d/1o9dThv-qKh-ZvJrk1a3xpCC6I7Gr-65B/view?usp=sharing"
+        }
+  ]
+    },
+    {
+      title: "TRAINING AT NULLCLASS",
+      subtitle:
+        "Completed a comprehensive training program at NullClass, where I gained hands-on experience in developing full-stack applications. The program equipped me with in-depth knowledge of modern web technologies, including frontend and backend development, database management, and API integration. Successfully earned a certification, showcasing my proficiency and commitment to building robust, end-to-end solutions.",
+      image: require("./assets/images/trainNullclass.png"),
+      imageAlt: "Google Assistant Action Logo",
+      footerLink: [
+        // {
+        //   name: "Source Code",
+        //   url: "https://github.com/thisIsOwais/Web-Exploration-Recorder-Extension"
+        // },
+        {
+          name: "Certification",
+          url: "https://drive.google.com/file/d/1cr_vjVjZQ4PPHPbA3DjyPhhy_M0Mv3vN/view?usp=sharing"
+        }
+  ]
     },
 
   ],
@@ -319,7 +368,7 @@ const blogSection = {
       url: "https://stackoverflow.com/questions/71913692/module-not-found-error-cant-resolve-react-dom-client/76654890?noredirect=1#comment135171044_76654890",
       title: "Error Solving contribution for react-dom-client",
       description:
-        "Do you want to win $200 and Google Assistant Tshirt by creating a Google Assistant Action in less then 30 min?"
+        "React Dom Error Solving?"
     },
   ],
   display: true // Set false to hide this section, defaults to true
