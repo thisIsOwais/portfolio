@@ -40,7 +40,7 @@ Created something awesome for your fork of the portfolio and want to share it? F
 ✔️ Twitter Timeline\
 ✔️ GitHub Profile
 
-To view a live example, **[click here](https://developerfolio.js.org/)**.
+To view a live example, **[click here]([https://portfolio-sand-psi-82.vercel.app/])**.
 
 
 ## Getting Started
@@ -151,9 +151,9 @@ Set `displayMediumBlogs` to true or false in portofolio.js to display fetched Me
 
 const greeting = {
   /* Your Summary And Greeting Section */
-  title: "Hi all I'm Saad",
+  title: "Hi all I'm Mohd Owais",
   subTitle: emoji("A passionate Full Stack Software Developer 🚀"),
-  resumeLink: "https://drive.google.com/file/d/1ofFdKF_mqscH8WvXkSObnVvC9kK7Ldlu/view?usp=sharing"
+  resumeLink: "[https://drive.google.com/file/d/1d3DY-jqx6pYBjD1WdGryrf08mgRF_HM2/view?usp=sharing]"
 };
 
 const socialMediaLinks = {
