@@ -347,7 +347,38 @@ const achievementSection = {
         // },
         {
           name: "Certification",
-          url: "https://drive.google.com/file/d/1cr_vjVjZQ4PPHPbA3DjyPhhy_M0Mv3vN/view?usp=sharing"
+          url: "https://drive.google.com/file/d/1LsTEkXhGutqEefgP1CxhKgdYpf9u_yeL/view?usp=sharing"
+        }
+  ]
+    },
+    {
+      title: "NAMASTE REACT",
+      subtitle:
+        "Completed an in-depth React course, mastering its core concepts, component lifecycle, and efficient state management. Gained hands-on experience in performance optimization, virtual DOM, and advanced patterns like Redux for state management. Explored best practices to build scalable, high-performance applications with modern React techniques.",
+        image: require("./assets/images/reactCertificate.png"),
+      imageAlt: "Google Assistant Action Logo",
+      footerLink: [
+        {
+          name: "Certification",
+          url: "https://drive.google.com/file/d/1LsTEkXhGutqEefgP1CxhKgdYpf9u_yeL/view?usp=sharing"
+        }
+  ]
+    },
+    {
+      title: "NAMASTE NODE.JS",
+      subtitle: `  
+      - Completed an in-depth exploration of Node.js core concepts.\n  
+      - Gained a strong understanding of event loop, asynchronous processing, and non-blocking I/O.\n  
+      - Explored Libuv and Chrome V8 engine to understand how Node.js handles concurrency.\n  
+      - Built modular and scalable backend systems using best practices.\n  
+      - Optimized performance through efficient event-driven architecture.  
+      `,
+        image: require("./assets/images/node.jsCertificate.png"),
+      imageAlt: "Google Assistant Action Logo",
+      footerLink: [
+        {
+          name: "Certification",
+          url: "https://drive.google.com/file/d/1cZuzGdwITYhYtg6zRfOVwIvCcMC2E4-p/view?usp=sharing"
         }
   ]
     },
