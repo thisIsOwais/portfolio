@@ -46,6 +46,7 @@ export default function Greeting() {
                   <a
                   // href={"https://drive.google.com/file/d/1d3DY-jqx6pYBjD1WdGryrf08mgRF_HM2/view?usp=sharing"}
                   href={greeting.resumeLink}
+                    target="_blank"
                     download="Resume.pdf"
                     className="download-link-button"
                   >

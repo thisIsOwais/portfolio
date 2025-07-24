@@ -1,0 +1,256 @@
+// Base grayscale palette
+$color-white: #ffffff;    // Primary white text and highlights
+$color-light: #d4d4d4;    // Light gray for subtle borders or muted text
+$color-medium: #b3b3b3;   // Medium gray for surfaces, inputs
+$color-dark: #171c28;     // Base dark background
+
+// Core theme colors
+$color-bg: $color-dark;                // App background
+$color-surface: #3a3a3a;              // Surface like cards/forms (slightly lighter than $color-bg)
+$color-primary: #1f2a44;              // Enterprise-grade dark blue
+$color-primary-hover: #2f3d5e;        // Slightly lighter blue on hover
+$color-secondary: #010210;            // Accent purple/pink for secondary elements
+$accent-color: #55198b;               // Sky blue – for alerts, info
+
+// State colors
+$color-success: #30d158;              // Success state
+$color-warning: #ffd60a;              // Warning state
+$color-error: #ff453a;                // Error state
+
+// Typography
+$color-text: $color-white;            // Main text
+$color-text-muted: rgba(255, 255, 255, 0.6);  // Muted/inactive text
+
+// Borders and shadows
+$color-border: rgba(255, 255, 255, 0.08);     // Subtle borders
+$color-shadow: rgba(0, 0, 0, 0.5);            // Deep shadow for pop-up/cards
+
+// Input fields
+$input-border: rgba(255, 255, 255, 0.1);
+$input-bg: #3a3a3a;
+
+// Buttons
+$button-bg: $color-primary;
+$button-text: $color-white;
+
+
+
+// =========================
+// Base Layout
+// =========================
+body, html {
+  background-color: $color-bg;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  // -family: 'Segoe UI', Tfontahoma, Geneva, Verdana, sans-serif;
+  $font-family: 'Inter', 'Segoe UI', sans-serif;
+
+}
+
+// =========================
+// Login Box
+// =========================
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  margin-top: 80px;
+  transform: translate(-50%, -60%);
+  background: $color-surface;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px $color-shadow;
+  border-radius: 10px;
+  opacity: 0;
+  animation: loginSlideIn 1.2s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes loginSlideIn {
+  0% {
+    transform: translate(-50%, -60%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+.login-box h2 {
+  margin: 0 0 30px;
+  color: $color-secondary;
+  text-align: center;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 1.2s;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+// =========================
+// Input Fields
+// =========================
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 120%;
+  padding: 10px 0;
+  font-size: 40px;
+  color: $color-secondary;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid $color-border;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+// Fix input selection & background in dark mode
+.login-box .user-box input {
+  background-color: $input-bg; // Dark input background
+  color: $color-text; // White text
+  caret-color: $color-white; // White blinking cursor
+  font-size: 28px;
+  border-bottom: 1px solid $color-border;
+}
+
+// Selection color for input fields
+.login-box .user-box input::selection {
+  background-color: lighten($color-primary, 10%);
+  color: $color-white;
+}
+
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:not(:placeholder-shown) ~ label {
+  top: -20px;
+  left: 0;
+  font-size: 25px;
+  color: $accent-color;
+}
+
+
+// .login-box .user-box input {
+//   transition: all 0.3s ease-in-out;
+// }
+
+
+.login-box .user-box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 30px;
+  color: $color-secondary;
+  pointer-events: none;
+  transition: 0.5s ease;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: 2px;
+  left: -10px;
+  color: $color-secondary;
+  font-size: 18px;
+}
+
+// =========================
+// Button
+// =========================
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, $color-primary, $accent-color);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
+}
+
+button:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 10px rgba(26, 115, 232, 0.3);
+}
+
+// =========================
+// Welcome Banner
+// =========================
+.welcome-banner {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, $color-primary, $accent-color);
+  color: white;
+  font-size: 2.2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  z-index: 1000;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  animation: bannerSlideFade 1s ease-out forwards, textShine 4s ease-in-out infinite;
+  opacity: 0;
+  box-shadow: 0 4px 12px $color-shadow;
+}
+
+@keyframes bannerSlideFade {
+  0% {
+    transform: translate(-50%, -40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes textShine {
+  0% {
+    background-position: -200%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+.welcome-banner::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.1)
+  );
+  background-size: 200% 100%;
+  animation: textShine 4s linear infinite;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
