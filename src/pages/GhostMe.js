@@ -244,7 +244,7 @@ export default function GhostMe() {
   
       // Pause current audio if it's the same one playing
       if (selectedMsg.isPlaying && !selectedMsg.isPaused && !isAnotherAudioPlaying) {
-        audioPlayer.printState();
+        // audioPlayer.printState();
         audioPlayer.pause();
         return prevMessages.map((msg) =>
           msg.id === messageId ? { ...msg, isPlaying: false, isPaused: true } : msg
@@ -253,7 +253,7 @@ export default function GhostMe() {
   
       // Resume audio if it was paused and still the same message
       if (selectedMsg.isPaused && !isAnotherAudioPlaying) {
-        audioPlayer.printState();
+        // audioPlayer.printState();
         audioPlayer.resume();
         return prevMessages.map((msg) =>
           msg.id === messageId ? { ...msg, isPlaying: true, isPaused: false } : msg
