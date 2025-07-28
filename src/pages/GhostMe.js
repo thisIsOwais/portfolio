@@ -12,12 +12,13 @@ import {
   Moon,
   VolumeX,
   Loader2, 
-  PlayIcon
+  PlayIcon,
+  Pause
 } from "lucide-react";
 import { speech } from "../utils/useTTS"; // Updated speech() utility
 import {simulateTyping} from "../utils/simulateTyping"
-import "./page.scss";
 import "./ghostMe.scss";
+import "./layout.scss"
 import { createAudioStreamPlayer } from "../utils/audioPlayer";
 export default function GhostMe() {
   const [messages, setMessages] = useState([
@@ -31,7 +32,7 @@ export default function GhostMe() {
       isPaused:false,
       isTyping:false,
       audioChunks: [],
-    },
+    }
   ]);
   const [inputText, setInputText] = useState("");
   const [isListening, setIsListening] = useState(false);
@@ -40,6 +41,26 @@ export default function GhostMe() {
   const messagesEndRef = useRef(null);
   const recognitionRef = useRef(null);
   const audioPlayer = useRef(createAudioStreamPlayer()).current;
+  const [showPopup, setShowPopup] = useState(false);
+
+  //popup creation
+  const showPopupHandler = () => setShowPopup(true);
+  useEffect(() => {
+     const timer = setTimeout(() => {
+     setShowPopup(false);
+   }, 3000);
+  return () => clearTimeout(timer);
+  }, [showPopup]);
+  let popup = null;
+  if(showPopup) {
+    popup =( 
+      <>
+       <div className="card-popup">
+        <p>Setting Feature coming soon..</p>
+       </div>
+      </>
+    );
+   }
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -149,8 +170,10 @@ export default function GhostMe() {
     );
     
 
+
     setIsTyping(true);
 
+    try{
      await speech(
       inputText,
       (partialText) => {
@@ -177,58 +200,114 @@ export default function GhostMe() {
           )
         );
       },
-      ()=>{
+      () => {
         setMessages((prev) =>
-      prev.map((msg) =>
-        msg.id === aiMessageId ? { ...msg, isTyping: false } : msg
-      )
-    );
-      }
+          prev.map((msg) =>
+            msg.id === aiMessageId
+              ? {
+                  ...msg,
+                  isTyping: false,
+                  isPlaying: false,
+                  isPaused: false, // or true, depending on behavior
+                }
+              : msg
+          )
+        );
+      },
+      
+      aiMessageId
     );
 
     
     setIsTyping(false);
+  }
+  catch(err) {
+    alert("Error in handleSendMessage:", err);
+    console.error("Error in handleSendMessage:", err);
+    setIsTyping(false); 
   };
+}
+
 
   const handleReplay = (messageId) => {
-    setMessages((prevMessages) =>
-      prevMessages.map((msg) => {
-        if (msg.id === messageId) {
-          // Resume if paused
-          if (msg.isPaused) {
-            audioPlayer.resume();
-            return { ...msg, isPlaying: true, isPaused: false };
-          }
+    setMessages((prevMessages) => {
+      let selectedMsg = prevMessages.find((m) => m.id === messageId);
   
-          // Pause if currently playing
-          if (msg.isPlaying) {
-            audioPlayer.pause();
-            return { ...msg, isPlaying: false, isPaused: true };
-          }
+      // If message not found or has no audio
+      if (!selectedMsg || !selectedMsg.audioChunks || selectedMsg.audioChunks.length === 0) {
+        return prevMessages;
+      }
+      const currentMessageId = audioPlayer.getMessageId();
+      
+      const isCurrentMsg = currentMessageId === messageId;
+      const isAnotherAudioPlaying = !isCurrentMsg;
   
-          // Fresh playback
-          audioPlayer.reset();
-          msg.audioChunks.forEach((chunk) => audioPlayer.enqueue(chunk));
+      // Pause current audio if it's the same one playing
+      if (selectedMsg.isPlaying && !selectedMsg.isPaused && !isAnotherAudioPlaying) {
+        audioPlayer.printState();
+        audioPlayer.pause();
+        return prevMessages.map((msg) =>
+          msg.id === messageId ? { ...msg, isPlaying: false, isPaused: true } : msg
+        );
+      }
   
-          // When audio finishes
-          audioPlayer.onDone(() => {
-            setMessages((prev) =>
-              prev.map((m) =>
-                m.id === messageId
-                  ? { ...m, isPlaying: false, isPaused: false }
-                  : m
-              )
-            );
-          });
-  
-          return { ...msg, isPlaying: true, isPaused: false };
-        }
-  
-        // All other messages stop
+      // Resume audio if it was paused and still the same message
+      if (selectedMsg.isPaused && !isAnotherAudioPlaying) {
+        audioPlayer.printState();
+        audioPlayer.resume();
+        return prevMessages.map((msg) =>
+          msg.id === messageId ? { ...msg, isPlaying: true, isPaused: false } : msg
+        );
+      }
+
+          // ⛔ Stop the previous playing message explicitly
+    const updatedMessages = prevMessages.map((msg) => {
+      if (msg.id === currentMessageId) {
         return { ...msg, isPlaying: false, isPaused: false };
-      })
+      }
+      else
+      {
+        return msg;
+      }
+    });
+
+    audioPlayer.stop(); 
+    audioPlayer.reset();
+
+      // Reset audioPlayer for this message
+      audioPlayer.setMessageId(messageId);
+  
+      // Enqueue safely after reset
+      audioPlayer.printState();
+
+    
+      for (const chunk of selectedMsg.audioChunks) {
+        audioPlayer.enqueue(chunk);
+      }
+
+
+  
+      // Set callback once (only for this message)
+      audioPlayer.onDone((doneId) => {
+        if (doneId === messageId) {
+          setMessages((prev) =>
+            prev.map((m) =>
+              m.id === messageId ? { ...m, isPlaying: false, isPaused: false } : m
+            )
+          );
+        }
+      });
+  
+   
+      // ✅ Mark this message as playing
+    return updatedMessages.map((msg) =>
+      msg.id === messageId
+        ? { ...msg, isPlaying: true, isPaused: false }
+        : msg
     );
+    });
   };
+
   
 
   const handleKeyPress = (e) => {
@@ -243,6 +322,7 @@ export default function GhostMe() {
   };
 
   return (
+  
     <div className="app-container">
       {/* Header */}
       <header className="header">
@@ -259,7 +339,7 @@ export default function GhostMe() {
           <div className="header-right">
             <span className="badge badge-success">Online</span>
 
-            <div className="theme-toggle" onClick={toggleTheme}>
+            <div className="theme-toggle" title="change theme" onClick={toggleTheme}>
               <div className={`toggle-slider ${isDarkMode ? "active" : ""}`}>
                 {isDarkMode ? (
                   <Moon className="toggle-icon" />
@@ -268,8 +348,11 @@ export default function GhostMe() {
                 )}
               </div>
             </div>
-
-            <button className="btn btn-ghost btn-sm">
+            {popup}
+            <button className="btn btn-ghost btn-sm"
+              onClick={showPopupHandler}
+              title="Feature Coming Soon"
+            >
               <Settings size={16} />
             </button>
           </div>
@@ -312,9 +395,9 @@ export default function GhostMe() {
                 {["Experience", "Skills", "Projects", "Education", "Contact"].map(
                   (topic) => (
                     <button
-                      key={topic}
-                      onClick={() => handleTopicClick(topic)}
-                      className="topic-button"
+                    key={topic}
+                    onClick={() => handleTopicClick(topic)}
+                    className="topic-button"
                     >
                       {topic}
                     </button>
@@ -334,54 +417,66 @@ export default function GhostMe() {
             </div>
 
              <div className="messages-container">
-              {messages.map((message) => (
-                <div key={message.id} className={`message message-${message.type}`}>
-                  <div className="message-content">
-                    <div className="avatar avatar-sm">
-                      {message.type === "user" ? (
-                        <div className="avatar-fallback secondary">
-                          <User size={16} />
-                        </div>
-                      ) : (
-                        <div className="avatar-fallback gradient">
-                          <Bot size={16} />
-                        </div>
-                      )}
-                    </div>
-                    <div className="message-bubble">
-                      <p className="message-text">{message.content}</p>
-                      <p className="message-time">
-                        {message.timestamp.toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })}
-                      </p>
+              {messages.map((message) => {
+                const isAnyTyping = messages.some((m) => m.isTyping);
+                const disableOthers = isAnyTyping && !message.isTyping;
 
-                      {/* 🔊 Replay button */}
-                      {message.type === "ai" &&
-                        message.audioChunks?.length > 0 && (
-                      
+                return (
+                  <div key={message.id} className={`message message-${message.type}`}>
+                    <div className="message-content">
+                      <div className="avatar avatar-sm">
+                        {message.type === "user" ? (
+                          <div className="avatar-fallback secondary">
+                            <User size={16} />
+                          </div>
+                        ) : (
+                          <div className="avatar-fallback gradient">
+                            <Bot size={16} />
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="message-bubble">
+                        <p className="message-text">{message.content}</p>
+                        <p className="message-time">
+                          {message.timestamp.toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
+                        </p>
+
+                        {/* 🔊 Replay button */}
+                        {message.type === "ai" && message.audioChunks?.length > 0 && (
                           message.isTyping ? (
                             <div className="replay-button">
                               <Loader2 className="animate-spin" size={16} />
                             </div>
                           ) : (
-                          <button onClick={() => handleReplay(message.id)}
-                            className="replay-button"
-                            title="Control audio"
-                          >
-                            {message.isPaused ? <PlayIcon size={14}/> 
-                              : message.isPlaying ? <VolumeX size={16}/> 
-                              : <Volume2 size={16}/>}
-                          </button>
-
+                            !disableOthers && 
+                              (
+                              <div className="control-buttons">
+                              <button
+                                onClick={() => handleReplay(message.id)}
+                                className={`btn btn-sm ${disableOthers ? "btn-destructive disabled" : "btn-outline"}`}
+                                title={message.isPaused ? "Play" : "Pause"}
+                              >
+                                {message.isPaused ? (
+                                  <PlayIcon title="play" size={14} />
+                                ) : message.isPlaying ? (
+                                  <Pause title="pause" size={16} />
+                                ) : (
+                                  <Volume2 size={16} />
+                                )}
+                              </button>
+                              </div>
+                            )
                           )
-                        )
-                        }
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))} 
+                );
+              })}
 
 
 
@@ -418,13 +513,13 @@ export default function GhostMe() {
                     className="input-field"
                     disabled={isTyping}
                     rows={1}
-
-                  />
+                    
+                    />
                   <div
                     className={`input-counter ${
                       inputText.length > 200 ? "visible" : ""
-                    }`}
-                  >
+                      }`}
+                      >
                     {inputText.length}/500
                   </div>
                 </div>
@@ -433,10 +528,10 @@ export default function GhostMe() {
                     onClick={isListening ? stopListening : startListening}
                     className={`btn btn-sm ${
                       isListening ? "btn-destructive" : "btn-outline"
-                    }`}
-                    disabled={isTyping}
-                    title={isListening ? "Stop listening" : "Start voice input"}
-                  >
+                      }`}
+                      disabled={isTyping}
+                      title={isListening ? "Stop listening" : "Start voice input"}
+                      >
                     {isListening ? <MicOff size={20} /> : <Mic size={20} />}
                   </button>
                   <button
@@ -444,7 +539,7 @@ export default function GhostMe() {
                     disabled={!inputText.trim() || isTyping}
                     className="btn btn-primary btn-sm"
                     title="Send message"
-                  >
+                    >
                     <Send size={20} />
                   </button>
                 </div>
@@ -460,8 +555,8 @@ export default function GhostMe() {
                   <div
                     className={`status-dot ${
                       isListening ? "listening" : isTyping ? "typing" : "ready"
-                    }`}
-                  ></div>
+                      }`}
+                      ></div>
                   <span>
                     {isListening
                       ? "Listening"

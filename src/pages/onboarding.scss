@@ -1,51 +1,55 @@
-// Base grayscale palette
-$color-white: #ffffff;    // Primary white text and highlights
-$color-light: #d4d4d4;    // Light gray for subtle borders or muted text
-$color-medium: #b3b3b3;   // Medium gray for surfaces, inputs
-$color-dark: #171c28;     // Base dark background
+// =========================
+// Variables
+// =========================
+$color-white: #ffffff;
+$color-light: #d4d4d4;
+$color-medium: #b3b3b3;
+$color-dark: #171c28;
 
-// Core theme colors
-$color-bg: $color-dark;                // App background
-$color-surface: #3a3a3a;              // Surface like cards/forms (slightly lighter than $color-bg)
-$color-primary: #1f2a44;              // Enterprise-grade dark blue
-$color-primary-hover: #2f3d5e;        // Slightly lighter blue on hover
-$color-secondary: #010210;            // Accent purple/pink for secondary elements
-$accent-color: #55198b;               // Sky blue – for alerts, info
+$color-bg: $color-dark;
+$color-surface: #3a3a3a;
+$color-primary: #1f2a44;
+$color-primary-hover: #2f3d5e;
+$color-secondary: #010210;
+$accent-color: #55198b;
 
-// State colors
-$color-success: #30d158;              // Success state
-$color-warning: #ffd60a;              // Warning state
-$color-error: #ff453a;                // Error state
+$color-success: #30d158;
+$color-warning: #ffd60a;
+$color-error: #ff453a;
 
-// Typography
-$color-text: $color-white;            // Main text
-$color-text-muted: rgba(255, 255, 255, 0.6);  // Muted/inactive text
+$color-text: $color-white;
+$color-text-muted: rgba(255, 255, 255, 0.6);
 
-// Borders and shadows
-$color-border: rgba(255, 255, 255, 0.08);     // Subtle borders
-$color-shadow: rgba(0, 0, 0, 0.5);            // Deep shadow for pop-up/cards
+$color-border: rgba(255, 255, 255, 0.08);
+$color-shadow: rgba(0, 0, 0, 0.5);
 
-// Input fields
 $input-border: rgba(255, 255, 255, 0.1);
 $input-bg: #3a3a3a;
 
-// Buttons
 $button-bg: $color-primary;
 $button-text: $color-white;
 
-
+$font-family: 'Inter', 'Segoe UI', sans-serif;
 
 // =========================
 // Base Layout
 // =========================
-body, html {
-  background-color: $color-bg;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  // -family: 'Segoe UI', Tfontahoma, Geneva, Verdana, sans-serif;
-  $font-family: 'Inter', 'Segoe UI', sans-serif;
+// html,
+// body {
+//   margin: 0;
+//   padding: 0;
+//   width: 100%;
+//   height: 100%;
+//   // font-family: $font-family;
+//   // background-color: $color-bg;
+// }
 
+.onboard {
+  background-color: $color-bg;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  font-family: $font-family;
 }
 
 // =========================
@@ -56,16 +60,104 @@ body, html {
   top: 50%;
   left: 50%;
   width: 400px;
+  max-width: 90%;
   padding: 40px;
-  margin-top: 80px;
   transform: translate(-50%, -60%);
   background: $color-surface;
-  box-sizing: border-box;
   box-shadow: 0 15px 25px $color-shadow;
   border-radius: 10px;
   opacity: 0;
   animation: loginSlideIn 1.2s ease-out forwards;
   animation-delay: 0.8s;
+
+  @media (max-width: 768px) {
+    padding: 30px 20px;
+    width: 90%;
+  }
+
+  h2 {
+    margin: 0 0 30px;
+    color: $color-secondary;
+    text-align: center;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1.2s;
+    opacity: 0;
+    font-size: 2rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.6rem;
+    }
+  }
+
+  .user-box {
+    position: relative;
+    margin-bottom: 25px;
+  
+    input {
+      width: 130%;
+      padding: 12px 10px;
+      font-size: 1.8rem;
+      background-color: $input-bg;
+      color: $color-text;
+      caret-color: $color-white;
+      border: none;
+      border-bottom: 1px solid $color-border;
+      outline: none;
+  
+      &::selection {
+        background-color: lighten($color-primary, 10%);
+        color: $color-white;
+      }
+  
+      &:focus ~ label {
+        top: -16px;
+        font-size: 0.85rem;
+        color: white;
+      }
+    }
+  
+    label {
+      position: absolute;
+      top: 16px;
+      left: 10px;
+      color: $color-secondary;
+      font-size: 1rem;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      background-color: $input-bg;
+      padding: 0 4px;
+    }
+  }
+  
+  
+  
+  button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, $color-primary, $accent-color);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
+    }
+
+    &:active {
+      transform: scale(0.98);
+      box-shadow: 0 4px 10px rgba(26, 115, 232, 0.3);
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+      padding: 10px;
+    }
+  }
 }
 
 @keyframes loginSlideIn {
@@ -79,114 +171,10 @@ body, html {
   }
 }
 
-.login-box h2 {
-  margin: 0 0 30px;
-  color: $color-secondary;
-  text-align: center;
-  animation: fadeIn 1s ease forwards;
-  animation-delay: 1.2s;
-  opacity: 0;
-}
-
 @keyframes fadeIn {
   to {
     opacity: 1;
   }
-}
-
-// =========================
-// Input Fields
-// =========================
-.login-box .user-box {
-  position: relative;
-}
-
-.login-box .user-box input {
-  width: 120%;
-  padding: 10px 0;
-  font-size: 40px;
-  color: $color-secondary;
-  margin-bottom: 30px;
-  border: none;
-  border-bottom: 1px solid $color-border;
-  background: transparent;
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-// Fix input selection & background in dark mode
-.login-box .user-box input {
-  background-color: $input-bg; // Dark input background
-  color: $color-text; // White text
-  caret-color: $color-white; // White blinking cursor
-  font-size: 28px;
-  border-bottom: 1px solid $color-border;
-}
-
-// Selection color for input fields
-.login-box .user-box input::selection {
-  background-color: lighten($color-primary, 10%);
-  color: $color-white;
-}
-
-
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:not(:placeholder-shown) ~ label {
-  top: -20px;
-  left: 0;
-  font-size: 25px;
-  color: $accent-color;
-}
-
-
-// .login-box .user-box input {
-//   transition: all 0.3s ease-in-out;
-// }
-
-
-.login-box .user-box label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 30px;
-  color: $color-secondary;
-  pointer-events: none;
-  transition: 0.5s ease;
-}
-
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-  top: 2px;
-  left: -10px;
-  color: $color-secondary;
-  font-size: 18px;
-}
-
-// =========================
-// Button
-// =========================
-button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(135deg, $color-primary, $accent-color);
-  color: white;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
-}
-
-button:active {
-  transform: scale(0.98);
-  box-shadow: 0 4px 10px rgba(26, 115, 232, 0.3);
 }
 
 // =========================
@@ -208,12 +196,39 @@ button:active {
   font-weight: bold;
   letter-spacing: 2px;
   z-index: 1000;
-  overflow: hidden;
   white-space: nowrap;
   text-align: center;
   animation: bannerSlideFade 1s ease-out forwards, textShine 4s ease-in-out infinite;
   opacity: 0;
   box-shadow: 0 4px 12px $color-shadow;
+
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+    height: 60px;
+  }
+
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.1)
+    );
+    background-size: 200% 100%;
+    animation: textShine 4s linear infinite;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
 }
 
 @keyframes bannerSlideFade {
@@ -234,23 +249,4 @@ button:active {
   100% {
     background-position: 200%;
   }
-}
-
-.welcome-banner::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0.1)
-  );
-  background-size: 200% 100%;
-  animation: textShine 4s linear infinite;
-  mix-blend-mode: overlay;
-  pointer-events: none;
 }

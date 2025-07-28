@@ -1,3 +1,5 @@
+//profile sidebar
+
 .app-container {
     min-height: 100vh;
     background: var(--background);
@@ -5,7 +7,6 @@
   }
   
    
- 
 
   .header {
     background: var(--surface);
@@ -20,6 +21,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap:12px;
     }
    
     .header-left {
@@ -61,7 +63,16 @@
       gap: 12px;
 
       .theme-toggle {
-        width:135px;
+        // width:135px;
+        width:48px;
+        .toggle-slider {
+          width: 24px;
+          height: 24px;
+          
+          &.active {
+            transform: translateX(18px);
+          }
+        }
       }
     }
   }
@@ -69,7 +80,8 @@
   .main-content {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 24px 16px;
+    // padding: 24px 16px;
+    padding: 0px 2px;
     
     .content-grid {
       display: grid;
@@ -83,6 +95,8 @@
   }
   
   .profile-sidebar {
+    // padding:2px;
+    padding:6px 6px;
     .profile-card {
       @extend .card;
       padding: 24px;
@@ -379,7 +393,7 @@
     }
     
 .input-area {
-    padding: 20px;
+    padding: 14px;
     border-top: 1px solid var(--border);
     background: var(--surface);
     transition: all 0.3s ease;
@@ -479,6 +493,12 @@
         flex-direction: column;
         gap: 8px;
         flex-shrink: 0;
+
+        .btn .disabled {
+          opacity: 0.5;
+          pointer-events: none;
+          cursor: not-allowed;
+        }
         
         .btn {
           width: 48px;
@@ -522,7 +542,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 12px;
+      // margin-top: 12px
+      padding: 2px 0;
     
       .input-hint {
         font-size: 13px;
@@ -596,7 +617,8 @@
   }
   
   .main-content {
-    padding: 16px;
+    // padding: 16px;
+    padding: 2px;
     
     .content-grid {
       gap: 16px;
@@ -653,7 +675,8 @@
       gap: 6px;
 
       .theme-toggle {
-        width: 120px;
+        // width: 120px;
+        width: 48px;
         // height: 20px;
       }
     }
@@ -685,6 +708,7 @@
       
       &.active {
         transform: translateX(22px);
+        // transform: translateX(18px);
       }
     }
     
@@ -709,4 +733,3 @@
     transform: translateY(0);
   }
 }
-

@@ -1,36 +1,54 @@
+/* // Reset + Box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* // HTML & Body base setup */
+html,
+body {
+  scroll-behavior: smooth;
+  height: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 19px;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* // Root wrapper */
+#root {
+  height: 100%;
+}
+
+/* // Fonts (custom Montserrat and Agustina) */
 @font-face {
   font-family: "Agustina Regular";
   font-style: normal;
-  font-weight: normal;
+  font-weight:2000;
   src: local("Agustina Regular"),
     url("./assets/fonts/Agustina.woff") format("woff");
   font-display: swap;
 }
+
 @font-face {
   font-family: "Montserrat";
   src: local("Montserrat"),
     url("./assets/fonts/Montserrat-Regular.ttf") format("woff");
   font-display: swap;
 }
+
+/* // Code font (optional) */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-html,
-body {
-  scroll-behavior: smooth;
-}
-body {
-  margin: 0;
-  font: 19px / 23px Montserrat, "Montserrat", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-/* Media Query */
+
+/* // Responsive font-size tweak */
 @media (max-width: 1380px) {
-  html,
-  body {
-    font-size: rem;
-    line-height: normal;
+  html {
+    font-size: 17px;
   }
 }

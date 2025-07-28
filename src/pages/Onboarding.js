@@ -17,11 +17,17 @@ const Onboarding = () => {
     const emailTrimmed = email.trim();
     const endpoint = process.env.REACT_APP_ENDPOINT;
 
+    if(!name || !emailTrimmed || !key) {
+      alert("Please fill in all fields.");
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await fetch(endpoint + "/api/onboard", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ key }),
+        body: JSON.stringify({ name,emailTrimmed,key }),
       });
 
       if (!res.ok) {
@@ -43,6 +49,7 @@ const Onboarding = () => {
 
   return (
     <>
+      <div className="onboard">
       <div className="welcome-banner">WELCOME TO GHOST ME</div>
 
       {loading && (
@@ -52,6 +59,8 @@ const Onboarding = () => {
         </div>
       )}
 
+        <h2>Welcome to Ghost Me!</h2>
+
       <div className={`login-box ${loading ? "disabled" : ""}`}>
         <h2>ONBOARD</h2>
         <form>
@@ -60,19 +69,21 @@ const Onboarding = () => {
               type="text"
               name="username"
               required
+              placeholder=" " 
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-            />
+              />
             <label>Username</label>
           </div>
           <div className="user-box">
             <input
               type="email"
               name="email"
+              placeholder=" " 
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            />
+              />
             <label>Email</label>
           </div>
           <div className="user-box">
@@ -80,9 +91,10 @@ const Onboarding = () => {
               type="password"
               name="key"
               required
+              placeholder=" " 
               value={key}
               onChange={(e) => setKey(e.target.value)}
-            />
+              />
             <label>Key</label>
           </div>
           <div className="user-box">
@@ -91,6 +103,7 @@ const Onboarding = () => {
             </button>
           </div>
         </form>
+      </div>
       </div>
     </>
   );
