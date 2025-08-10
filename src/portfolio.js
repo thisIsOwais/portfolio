@@ -33,7 +33,7 @@ const greeting = {
 // Social Media Links
 
 const socialMediaLinks = {
-  github: "https://github.com/18owais",
+  github: "https://github.com/thisIsOwais",
   linkedin: "https://www.linkedin.com/in/owais-mohd-ansar/",
   gmail: "owaismohd857@gmail.com",
   linkTree: "https://linktr.ee/MOHD_OWAIS_ANSARI",
