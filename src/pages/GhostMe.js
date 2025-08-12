@@ -20,6 +20,9 @@ import {simulateTyping} from "../utils/simulateTyping"
 import "./ghostMe.scss";
 import "./layout.scss"
 import { createAudioStreamPlayer } from "../utils/audioPlayer";
+import { triggerToast } from "../hooks/triggerToast";
+
+
 export default function GhostMe() {
   const [messages, setMessages] = useState([
     {
@@ -143,6 +146,21 @@ export default function GhostMe() {
 
   const handleSendMessage = async () => {
     if (!inputText.trim()) return;
+
+      
+    triggerToast({
+      title: "Service Limit Reached",
+      message: "Our AI service limit has been reached due to token usage.",
+      linkText: "Watch Demo",
+      linkUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7355520672787283968/",
+      type: "info",
+      autoClose: 5000,
+      redirect: true
+    });
+
+
+      return;
+
 
     const userMessage = {
       id: Date.now(),

@@ -28,3 +28,15 @@
 .subTitle {
   color: $subTitle;
 }
+
+/* Remove white bg of toast wrapper */
+.Toastify__toast {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Hide the close button if you want */
+// .Toastify__close-button {
+//   display: none !important;
+// }
