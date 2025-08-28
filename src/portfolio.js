@@ -26,7 +26,7 @@ const greeting = {
     "A passionate Full Stack Software Developer 🚀 with expertise in building dynamic and scalable web applications. Beyond development, I have a strong foundation in Data Structures and Algorithms (DSA), enabling me to craft efficient and optimized solutions."
   ),
   resumeLink:
-    "https://drive.google.com/file/d/1F3xBRUlK3FQTXGYNEzoPTWrSOL5pwKEk/view?usp=drive_link", // Set to empty to hide the button 
+    "https://drive.google.com/file/d/1BjTs5yjYvKFFKbn82K5Ur6EI-GdgU8It/view?usp=sharing", // Set to empty to hide the button 
   displayGreeting: true // Set false to hide this section, defaults to true
 };
 
